@@ -49,9 +49,7 @@ export default function Detail({ data }) {
   );
 }
 
-export const getServerSideProps = async ({ params: { params } }) => {
-  const id = params[0];
-
+export const getServerSideProps = async ({ query: { id } }) => {
   const data = await (
     await fetch(`http://localhost:3000/api/movies/${id}`)
   ).json();
