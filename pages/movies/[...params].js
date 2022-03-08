@@ -1,7 +1,6 @@
 import Seo from "../../components/Seo";
 
 export default function Detail({ data }) {
-  console.log(data);
   return (
     <>
       <Seo title={data.original_title} />
@@ -50,8 +49,8 @@ export default function Detail({ data }) {
   );
 }
 
-export const getServerSideProps = async (context) => {
-  const id = context.params.params[0];
+export const getServerSideProps = async ({ params: { params } }) => {
+  const id = params[0];
 
   const data = await (
     await fetch(`http://localhost:3000/api/movies/${id}`)
